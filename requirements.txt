@@ -1,0 +1,11 @@
+torch>=2.0
+transformer-lens>=1.0
+einops
+jaxtyping
+fancy_einsum
+plotly
+kaleido
+numpy
+scipy
+tqdm
+pyyaml

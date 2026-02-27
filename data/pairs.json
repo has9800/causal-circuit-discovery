@@ -1,0 +1,23 @@
+[
+  {
+    "causal": "Smoking causes lung damage. Lung damage causes cancer. Does smoking cause cancer? Answer:",
+    "correlational": "Smoking correlates with lung damage. Lung damage correlates with cancer. Does smoking correlate with cancer? Answer:",
+    "causal_answer": "Yes",
+    "correlational_answer": "No",
+    "type": "transitivity"
+  },
+  {
+    "causal": "Rain causes wet roads. Wet roads cause car accidents. Does rain cause car accidents? Answer:",
+    "correlational": "Rain correlates with wet roads. Wet roads correlate with car accidents. Does rain correlate with car accidents? Answer:",
+    "causal_answer": "Yes",
+    "correlational_answer": "No",
+    "type": "transitivity"
+  },
+  {
+    "causal": "Ice cream sales and drownings both increase in summer. Summer causes more ice cream sales and more swimming. Does ice cream cause drownings? Answer:",
+    "correlational": "Ice cream sales correlate with drownings because both increase in summer. Does ice cream correlate with drownings? Answer:",
+    "causal_answer": "No",
+    "correlational_answer": "Yes",
+    "type": "confounding"
+  }
+]
