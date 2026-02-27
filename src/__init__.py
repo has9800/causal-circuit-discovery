@@ -6,4 +6,5 @@ __all__ = [
     "compare",
     "ablate",
     "visualize",
+    "phase3_train",
 ]

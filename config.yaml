@@ -1,5 +1,5 @@
 model:
-  name: "EleutherAI/gpt-neo-1.3B"
+  name: "EleutherAI/gpt-j-6B"
   device: "cuda"
   dtype: "float32"
   debug_model: "EleutherAI/gpt-neo-125m"
@@ -7,12 +7,35 @@ model:
 
 data:
   pairs_path: "data/pairs.json"
+  corr2cause_path: "data/corr2cause.json"
 
 analysis:
   top_k: 10
   ablation_k: 5
   n_random_baselines: 10
   significance_threshold: 0.01
+
+phase3:
+  path_heads:
+    - [0, 0]
+    - [0, 4]
+    - [2, 1]
+    - [5, 0]
+    - [5, 9]
+    - [9, 2]
+    - [9, 5]
+    - [10, 11]
+    - [12, 2]
+    - [20, 1]
+  unfreeze_mlps: true
+  learning_rate: 1.0e-5
+  epochs: 10
+  batch_size: 4
+  train_split: 1.0
+  eval_every: 1
+  save_dir: "./results/phase3"
+  random_baseline: true
+  random_seed: 42
 
 output:
   dir: "./results"

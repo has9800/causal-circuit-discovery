@@ -75,3 +75,46 @@ def save_all_visuals(comparison, ablation_results: Dict[str, float], out_dir: st
                 f"Differential Activation ({ptype})",
                 out_root / f"heatmap_differential_{safe}.html",
             )
+
+
+
+def plot_training_curves(history: Dict[str, list], out_path: Path) -> None:
+    epochs = history.get("epoch", [])
+    train_loss = history.get("train_loss", [])
+    eval_accuracy = history.get("eval_accuracy", [])
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=epochs, y=train_loss, name="Train Loss", yaxis="y1", mode="lines+markers"))
+    fig.add_trace(go.Scatter(x=epochs, y=eval_accuracy, name="Eval Accuracy", yaxis="y2", mode="lines+markers"))
+    fig.update_layout(
+        title="Phase3 Training Curves",
+        xaxis_title="Epoch",
+        yaxis={"title": "Loss", "side": "left"},
+        yaxis2={"title": "Accuracy", "overlaying": "y", "side": "right", "range": [0, 1]},
+        legend={"x": 0.01, "y": 0.99},
+    )
+    _save_fig(fig, out_path)
+
+
+def plot_comparison_table(results: Dict[str, Dict[str, float]], out_path: Path) -> None:
+    conditions = list(results.keys())
+    type_names = sorted({ptype for item in results.values() for ptype in item.get("by_type", {}).keys()})
+
+    fig = go.Figure()
+    for condition in conditions:
+        fig.add_trace(
+            go.Bar(
+                name=condition,
+                x=type_names,
+                y=[results[condition].get("by_type", {}).get(t, 0.0) for t in type_names],
+            )
+        )
+
+    fig.update_layout(
+        title="Corr2Cause Accuracy by Condition and Task Type",
+        barmode="group",
+        xaxis_title="Task Type",
+        yaxis_title="Accuracy",
+        yaxis={"range": [0, 1]},
+    )
+    _save_fig(fig, out_path)
