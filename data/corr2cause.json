@@ -1,0 +1,23 @@
+[
+  {
+    "causal": "If A causes B and B causes C, does A cause C? Answer:",
+    "correlational": "If A correlates with B and B correlates with C, does A correlate with C? Answer:",
+    "causal_answer": "Yes",
+    "correlational_answer": "Yes",
+    "type": "transitivity"
+  },
+  {
+    "causal": "Rain causes wet roads. Rain also causes umbrella sales. Do umbrella sales cause wet roads? Answer:",
+    "correlational": "Umbrella sales correlate with wet roads. Do umbrella sales correlate with wet roads? Answer:",
+    "causal_answer": "No",
+    "correlational_answer": "Yes",
+    "type": "confounding"
+  },
+  {
+    "causal": "Exercise causes sweating. Exercise causes high heart rate. Does sweating cause high heart rate? Answer:",
+    "correlational": "Sweating correlates with high heart rate. Does sweating correlate with high heart rate? Answer:",
+    "causal_answer": "No",
+    "correlational_answer": "Yes",
+    "type": "collider"
+  }
+]
